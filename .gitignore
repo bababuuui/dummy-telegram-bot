@@ -1,0 +1,9 @@
+node_modules
+dist
+.idea
+*.iml
+package-lock.json
+
+src/config/default.json
+
+
