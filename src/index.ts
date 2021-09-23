@@ -28,7 +28,12 @@ bot.onText(/\/weather (.+)/, (msg, match) => {
     const chatId = msg.chat.id;
     OpenWeatherAPIHandler.getCurrentWeatherForCity(<string>city).then(
         data=> {
-            bot.sendMessage(chatId, JSON.stringify(data));
+
+            const message = `Weather in ${data.name} :  
+${data.weather[0].main} ,${data.weather[0].description}
+Temp  ${(data.main.temp -273.5).toFixed(1)} *C
+          `
+            bot.sendMessage(chatId, message);
         }
     ).catch( error => {
         bot.sendMessage(chatId, `Can not find such city - ${city}`);
